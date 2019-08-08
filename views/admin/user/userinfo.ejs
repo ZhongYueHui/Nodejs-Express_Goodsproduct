@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <!--The content below is only a placeholder and can be replaced.-->
+
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+
+    <!-- 公共的头部 -->
+    <%include ../pubilc/header.ejs%>
+    <!-- 公共的侧边栏 -->
+    <%include ../pubilc/aslideleft.ejs%>
+    <div class="col-sm-10">
+        <ol class="breadcrumb">
+            <li class="active">用户管理
+            </li>
+            <li class="active">用户列表
+            </li>
+        </ol>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                搜索
+            </div>
+            <div class="panel-body">
+                <form role="form" class="form-inline">
+                    <div class="form-group">
+                        <label for="name">名称</label>
+                        <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">开始搜索</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--
+                列表展示
+            -->
+        <div class="table-responsive">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>用户名</th>
+
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% for(let i=0;i<List.length;i++){%>
+
+                    <tr>
+                        <td><%=i+1%></td>
+                        <td><%=List[i].username%></td>
+                        <td class="text-center"><a href="/admin/user/updateuser?id=<%=List[i]._id%>"
+                                class="btn btn-success">修改
+                            </a> <a href="/admin/user/deleteuser?id=<%=List[i]._id%>" class="btn btn-danger">
+                                删除</a>
+                        </td>
+                    </tr>
+
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
